@@ -7,7 +7,8 @@ def pytest_addoption(parser):
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default='en',
                      help="Choose language according to ISO 639")
-
+    parser.addoption('--timeout', action='store', default='10',
+                     help="Setting time for implicity waitings")
 
 @pytest.fixture(scope="function")
 def browser(request):
@@ -16,7 +17,6 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome()
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
         browser = webdriver.Chrome(options=options)

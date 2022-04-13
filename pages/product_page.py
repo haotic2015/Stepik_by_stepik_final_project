@@ -22,4 +22,11 @@ class ProductPage(BasePage):
         product_name_from_alert_added_to_basket = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_FROM_ALERT_ADDED_TO_BASKET).text # Берём название товара из информационного сообшения
         assert product_name == product_name_from_alert_added_to_basket, "Товар, добавленный в корзину, не соответствует желаемому." # Сравниваем названия исходного и добавленного товаров
 
-
+    
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Сообщение об успехе присутствует, но вообще-то быть его не должно"
+        
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Сообщение об успехе не пропало, а вообще-то ему бы следовало исчезнуть"
+       
+   

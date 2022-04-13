@@ -15,3 +15,4 @@ class ProductPageLocators():
     PRODUCT_NAME_FROM_ALERT_ADDED_TO_BASKET = (By.CSS_SELECTOR, "#messages .alert:nth-child(1) strong")
     BASKET_VALUE_FROM_ALERT_ADDED_TO_BASKET = (By.CSS_SELECTOR, "#messages .alert:nth-child(3) strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alertinner strong")

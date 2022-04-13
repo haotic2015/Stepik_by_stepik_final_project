@@ -3,6 +3,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from .locators import BasePageLocators
 import math
 
 class BasePage():
@@ -30,10 +31,10 @@ class BasePage():
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
-            print(f"Откуда ни возьмись появился алёрт: {alert_text}")
+            print(f"И тут откуда ни возьмись появился второй алёрт: {alert_text}")
             alert.accept()
         except NoAlertPresentException:
-            print("No second alert presented")
+            print("Второго алёрта не было")
             
     def is_not_element_present(self, how, what, timeout=4):
         try:
@@ -50,3 +51,10 @@ class BasePage():
             return False
         
         return True
+    
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Ссылка на страницу логина отсутствует"

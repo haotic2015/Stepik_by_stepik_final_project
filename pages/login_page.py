@@ -26,6 +26,4 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.EMAIL).send_keys(email)
         self.browser.find_element(*LoginPageLocators.PWD1).send_keys(password)
         self.browser.find_element(*LoginPageLocators.PWD2).send_keys(password)
-        time.sleep(2)
         self.browser.find_element(*LoginPageLocators.SBMT_BUTTON).click()
-        time.sleep(2)
